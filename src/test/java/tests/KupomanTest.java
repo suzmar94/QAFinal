@@ -39,6 +39,11 @@ public class KupomanTest extends BaseTest{
         CatchingNumbersPage articleNumber = new CatchingNumbersPage(driver);
         articleNumber.articlesDisplayed();
 
+        double filteredNumber = articleNumber.numberDisplayedInFilter;
+        double articlesNumber = articleNumber.numberOfArticlesDisplayed;
+
+        Assert.assertEquals(filteredNumber, articlesNumber, 0.01);
+
         //due to visual confirmation
         Thread.sleep(4000);
     }

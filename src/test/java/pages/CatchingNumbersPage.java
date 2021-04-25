@@ -11,34 +11,35 @@ import java.util.List;
 
 public class CatchingNumbersPage extends BaseHelper {
 
-    @FindBy(className="subcategories__badge")
-    WebElement numberInFilter;
-    @FindBy(className="col-left-ap")
+    @FindBy(className = "row-eq-height")
+    WebElement divArticles;
+    @FindBy(className = "col-left-ap")
     WebElement wrapper;
 
-    public String numberDisplayedInFilter;
-    public String numberOfArticlesDisplayed;
+    public double numberDisplayedInFilter;
+    public double numberOfArticlesDisplayed;
 
-    public CatchingNumbersPage(WebDriver driver)
-    {
+
+    public CatchingNumbersPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
-    private void filterNumber(){
+    private void filterNumber() {
         WebElement total = wrapper.findElement(By.className("subcategories"));
         List<WebElement> subcategory = total.findElements(By.tagName("a"));
         WebElement nadogradnja = subcategory.get(14);
         WebElement numFilter = nadogradnja.findElement(By.tagName("span"));
-        System.out.println(numFilter.getText());
-        numberDisplayedInFilter = numFilter.getText();
-        System.out.println("broj u filteru je:"+numberDisplayedInFilter);
+        numberDisplayedInFilter = Integer.parseInt(numFilter.getText());
+        System.out.println("Number of articles in filter:" + numberDisplayedInFilter);
 
     }
-    private void articlesTotal(){
-
+    private void articlesTotal() {
+        List<WebElement> articlesOnPage = divArticles.findElements(By.className("col-sm-6"));
+        numberOfArticlesDisplayed = articlesOnPage.size();
+        System.out.println("Number of articles displayed on the page:" + numberOfArticlesDisplayed);
     }
-    public void articlesDisplayed(){
+    public void articlesDisplayed() {
         filterNumber();
-
+        articlesTotal();
     }
 }
