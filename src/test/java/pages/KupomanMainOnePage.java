@@ -9,12 +9,12 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class KupomanBeautyAndWellnessPage extends BaseHelper {
+public class KupomanMainOnePage extends BaseHelper {
 
     @FindBy(className="sub-menu__items_wrapper")
     WebElement optionsWrapper;
 
-    public KupomanBeautyAndWellnessPage(WebDriver driver)
+    public KupomanMainOnePage(WebDriver driver)
     {
         this.driver = driver;
         PageFactory.initElements(driver, this);

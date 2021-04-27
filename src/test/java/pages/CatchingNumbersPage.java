@@ -19,7 +19,6 @@ public class CatchingNumbersPage extends BaseHelper {
     public double numberDisplayedInFilter;
     public double numberOfArticlesDisplayed;
 
-
     public CatchingNumbersPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver, this);

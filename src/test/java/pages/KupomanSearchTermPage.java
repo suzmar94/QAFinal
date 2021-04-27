@@ -7,12 +7,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class KupomanSearchPage extends BaseHelper {
+public class KupomanSearchTermPage extends BaseHelper {
 
     @FindBy(className="sub-menu__search_wrapper")
     WebElement subMenu;
 
-    public KupomanSearchPage(WebDriver driver)
+    public KupomanSearchTermPage(WebDriver driver)
     {
         this.driver = driver;
         PageFactory.initElements(driver, this);

@@ -5,16 +5,13 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pages.CatchingNumbersPage;
-import pages.KupomanBeautyAndWellnessPage;
-import pages.KupomanSearchPage;
-import pages.NadogradnjaTrepavicaPage;
+import pages.*;
 
 public class KupomanTest extends BaseTest{
     @Test
-    public void KupomanSearchTest() throws InterruptedException {
+    public void KupomanSearchTermTest() throws InterruptedException {
 
-        KupomanSearchPage termSearch = new KupomanSearchPage(driver);
+        KupomanSearchTermPage termSearch = new KupomanSearchTermPage(driver);
         termSearch.searchingTerm("depilacija");
 
         wdWait.until(ExpectedConditions.presenceOfElementLocated(By.className("page-content")));
@@ -28,12 +25,12 @@ public class KupomanTest extends BaseTest{
     }
 
     @Test
-    public void KupomanBeautyAndWellnessTest() throws InterruptedException {
+    public void KupomanLepotaIWellnessTest() throws InterruptedException {
 
-        KupomanBeautyAndWellnessPage articlesDisplayed = new KupomanBeautyAndWellnessPage(driver);
+        KupomanMainOnePage articlesDisplayed = new KupomanMainOnePage(driver);
         articlesDisplayed.clickOnlepotaIWellness();
 
-        NadogradnjaTrepavicaPage categorySelection = new NadogradnjaTrepavicaPage(driver);
+        LepotaIWellnessPage categorySelection = new LepotaIWellnessPage(driver);
         categorySelection.nadogradnjaTrepavicaCategory();
 
         CatchingNumbersPage articleNumber = new CatchingNumbersPage(driver);
@@ -43,6 +40,28 @@ public class KupomanTest extends BaseTest{
         double articlesNumber = articleNumber.numberOfArticlesDisplayed;
 
         Assert.assertEquals(filteredNumber, articlesNumber, 0.01);
+
+        //due to visual confirmation
+        Thread.sleep(4000);
+    }
+
+    @Test
+    public void KupomanHranaIPiceTest() throws InterruptedException {
+
+        KupomanMainTwoPage hranaIPice = new KupomanMainTwoPage(driver);
+        hranaIPice.clickOnHranaIPice();
+
+        HranaIPicePage categorySelection = new HranaIPicePage(driver);
+        categorySelection.konobaAkustikCategory();
+
+        FirstMealPage firstOffer = new FirstMealPage(driver);
+        firstOffer.firstMealClick();
+
+        SelectMealOfferPage selectMeal = new SelectMealOfferPage(driver);
+        selectMeal.selectMealOffer();
+
+        AddToCartPage cartAddition = new AddToCartPage(driver);
+        cartAddition.addToCart();
 
         //due to visual confirmation
         Thread.sleep(4000);

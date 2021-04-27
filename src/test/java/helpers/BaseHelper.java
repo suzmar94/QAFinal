@@ -8,6 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.Arrays;
+
 public class BaseHelper {
 
     protected static WebDriver driver;
@@ -17,6 +19,7 @@ public class BaseHelper {
     static {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-notifications");
+//        options.setExperimentalOption("excludeSwitches", Arrays.asList("disable-popup-blocking"));
         driver = new ChromeDriver(options);
         wdWait = new WebDriverWait(driver, 20);
         js = (JavascriptExecutor) driver;
