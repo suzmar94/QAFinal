@@ -23,6 +23,7 @@ public class CatchingNumbersPage extends BaseHelper {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
     private void filterNumber() {
         WebElement total = wrapper.findElement(By.className("subcategories"));
         List<WebElement> subcategory = total.findElements(By.tagName("a"));
@@ -32,11 +33,13 @@ public class CatchingNumbersPage extends BaseHelper {
         System.out.println("Number of articles in filter:" + numberDisplayedInFilter);
 
     }
+
     private void articlesTotal() {
         List<WebElement> articlesOnPage = divArticles.findElements(By.className("col-sm-6"));
         numberOfArticlesDisplayed = articlesOnPage.size();
         System.out.println("Number of articles displayed on the page:" + numberOfArticlesDisplayed);
     }
+
     public void articlesDisplayed() {
         filterNumber();
         articlesTotal();

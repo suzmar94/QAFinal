@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import pages.*;
 
-public class KupomanTest extends BaseTest{
+public class KupomanTest extends BaseTest {
     @Test
     public void KupomanSearchTermTest() throws InterruptedException {
 
@@ -62,6 +62,14 @@ public class KupomanTest extends BaseTest{
 
         AddToCartPage cartAddition = new AddToCartPage(driver);
         cartAddition.addToCart();
+
+        cartAddition.oneUnitPrice = cartAddition.oneUnitPrice.replace(",00", "");
+
+        double mealPrice = Double.parseDouble(cartAddition.oneUnitPrice);
+        double totalPrice = Double.parseDouble(cartAddition.chosenUnitsPrice);
+        double quantity = 2;
+
+        Assert.assertEquals(totalPrice, mealPrice * quantity, 001);
 
         //due to visual confirmation
         Thread.sleep(4000);
